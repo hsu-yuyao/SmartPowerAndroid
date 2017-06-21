@@ -10,8 +10,48 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.smartpower.cilab.smartpower.MainActivity">
 
-    <TextView
+    <Button
+        android:id="@+id/watch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Test          SmartPower" />
+        android:text="手錶"
+        android:layout_marginTop="80dp"
+        android:layout_alignTop="@+id/letter"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/letter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="39dp" />
+
+    <Button
+        android:id="@+id/earring"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="耳環"
+        android:layout_marginTop="29dp"
+        android:layout_below="@+id/watch"
+        android:layout_alignStart="@+id/watch" />
+
+    <Button
+        android:id="@+id/hot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/earring"
+        android:layout_below="@+id/earring"
+        android:layout_marginTop="34dp"
+        android:text="熱門商品" />
+
+    <Button
+        android:id="@+id/list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/hot"
+        android:layout_below="@+id/hot"
+        android:layout_marginTop="35dp"
+        android:text="購物清單" />
 </RelativeLayout>

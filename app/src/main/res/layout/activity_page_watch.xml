@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.smartpower.cilab.smartpower.page_watch">
+
+    <Button
+        android:id="@+id/BACK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BACK"
+        tools:layout_editor_absoluteX="62dp"
+        tools:layout_editor_absoluteY="148dp" />
+
+    <TextView
+        android:id="@+id/TextView"
+        android:layout_width="123dp"
+        android:layout_height="55dp"
+        android:text="我要買手錶"
+        tools:layout_editor_absoluteX="62dp"
+        tools:layout_editor_absoluteY="31dp" />
+
+</android.support.constraint.ConstraintLayout>

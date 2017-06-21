@@ -15,6 +15,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".page_watch" />
+        <activity android:name=".page_earring" />
+        <activity android:name=".page_hot" />
+        <activity android:name=".page_list" />
+        <activity android:name=".page_qr" />
+        <activity android:name=".page_graph"></activity>
     </application>
 
 </manifest>
