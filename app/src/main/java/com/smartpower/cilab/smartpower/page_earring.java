@@ -5,17 +5,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class page_earring extends AppCompatActivity {
 
-    private Button back;
+    private ImageButton back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_earring);
 
-        back = (Button) findViewById(R.id.BACK);
+        back = (ImageButton) findViewById(R.id.BACK);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
