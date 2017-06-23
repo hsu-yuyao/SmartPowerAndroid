@@ -7,26 +7,21 @@
     android:layout_height="match_parent"
     tools:context="com.smartpower.cilab.smartpower.page_watch">
 
-    <TextView
-        android:id="@+id/TextView"
-        android:layout_width="123dp"
-        android:layout_height="55dp"
-        android:text="我要買手錶"
-        tools:layout_editor_absoluteX="62dp"
-        tools:layout_editor_absoluteY="31dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="32dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+    <android.support.v7.widget.RecyclerView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recycler_view"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"/>
 
     <ImageButton
         android:id="@+id/BACK"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/TextView"
-        android:layout_alignStart="@+id/TextView"
-        android:layout_below="@+id/TextView"
-        android:layout_marginTop="88dp"
-        app:srcCompat="@android:drawable/ic_menu_revert" />
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        app:srcCompat="@android:drawable/ic_menu_revert"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="33dp" />
 
 </RelativeLayout>
