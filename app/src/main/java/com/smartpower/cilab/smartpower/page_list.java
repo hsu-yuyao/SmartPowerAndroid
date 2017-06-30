@@ -1,12 +1,20 @@
 package com.smartpower.cilab.smartpower;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.TypedArray;
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -19,10 +27,11 @@ import java.util.ArrayList;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
-public class page_list extends AppCompatActivity  {
+public class page_list extends Activity {
 
     private ContactsAdapter adapter;
     private RecyclerView rvContacts;
+    private RecyclerView.LayoutManager mLayoutManager;
 
     private ImageButton back,qr;
     private ZXingScannerView zXingScannerView;
@@ -37,9 +46,17 @@ public class page_list extends AppCompatActivity  {
 
         //  宣告 recyclerView
         rvContacts = (RecyclerView) findViewById(R.id.recyclerview);
-        adapter = new ContactsAdapter(Contact.generateSampleList());
+        adapter = new ContactsAdapter( Contact.generateSampleList());
         rvContacts.setAdapter(adapter);
-        rvContacts.setLayoutManager(new LinearLayoutManager(this));
+//        rvContacts.setLayoutManager(new LinearLayoutManager(this));
+       rvContacts.addItemDecoration(new DividerItemDecoration(this, Divider.VERTICAL_LIST));
+//        mLayoutManager = new StaggeredGridLayoutManager((1), StaggeredGridLayoutManager.VERTICAL);
+        rvContacts.setLayoutManager(new GridLayoutManager(this, 1));
+        rvContacts.setItemAnimator(new DefaultItemAnimator());
+
+//        RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(this, Divider.VERTICAL_LIST);
+//        rvContacts.addItemDecoration(itemDecoration);
+
 
 
 
@@ -103,4 +120,5 @@ public class page_list extends AppCompatActivity  {
         }*/
 
     }
+
 }
