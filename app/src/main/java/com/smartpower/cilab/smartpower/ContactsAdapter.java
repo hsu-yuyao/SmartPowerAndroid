@@ -21,21 +21,24 @@ import java.util.List;
 
 public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHolder>  {
 
+    private static LayoutInflater mLayoutInflater;
     private static Context context;
+    private String[] mTitles;
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
 //        private View itemView;
-        public TextView nameTextView;
+        public TextView nameTextView, priceTextView;
         public ViewHolder(View itemView){
             super(itemView);
 //            this.itemView = itemView;
             nameTextView = (TextView) itemView.findViewById(R.id.tv_name);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Log.d("NormalTextViewHolder", "onClick--> position = " + getPosition());
-                }
-            });
+            priceTextView = (TextView) itemView.findViewById(R.id.tv_price);
+//            itemView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Log.d("NormalTextViewHolder", "onClick--> position = " + getPosition());
+//                }
+//            });
         }
     }
 //拿表
@@ -58,8 +61,9 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Contact contact = mContacts.get(position);
-        TextView nameTextView = holder.nameTextView;
-        nameTextView.setText(contact.getName());
+        holder.nameTextView.setText(contact.getName());
+        holder.priceTextView.setText(contact.getPrice());
+//        nameTextView.setText(contact.getName());
 
 
     }
