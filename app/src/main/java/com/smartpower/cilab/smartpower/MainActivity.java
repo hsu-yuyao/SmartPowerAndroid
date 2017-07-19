@@ -1,12 +1,16 @@
 package com.smartpower.cilab.smartpower;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import com.smartpower.cilab.smartpower.PHP.JSONcode;
+
+import org.json.JSONException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,9 +28,20 @@ public class MainActivity extends AppCompatActivity {
         watch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(MainActivity.this , page_watch.class);
-                startActivity(intent);
+                JSONcode item = new JSONcode("getWatch");
+                Log.d("MainActivity", "ArrayList numbers: " + item.getItemData().size());
+                for(int i=0; i<item.getItemData().size(); i++) {
+                    try {
+                        Log.d("MainActivity", "Item: " + item.getItemData().get(i));
+                        Log.d("MainActivity", "Name: " + item.getItemData().get(i).getString("Name"));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+//                Intent intent = new Intent();
+//                intent.setClass(MainActivity.this , page_watch.class);
+//                startActivity(intent);
             }
         });
 
@@ -36,9 +51,19 @@ public class MainActivity extends AppCompatActivity {
         earring.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(MainActivity.this , page_earring.class);
-                startActivity(intent);
+                JSONcode item = new JSONcode("getEarring");
+                Log.d("MainActivity", "ArrayList numbers: " + item.getItemData().size());
+                for(int i=0; i<item.getItemData().size(); i++) {
+                    try {
+                        Log.d("MainActivity", "Item: " + item.getItemData().get(i));
+                        Log.d("MainActivity", "Item: " + item.getItemData().get(i).getString("Name"));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+//                Intent intent = new Intent();
+//                intent.setClass(MainActivity.this , page_earring.class);
+//                startActivity(intent);
             }
         });
 
