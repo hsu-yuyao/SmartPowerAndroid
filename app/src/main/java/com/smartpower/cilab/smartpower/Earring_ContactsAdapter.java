@@ -1,13 +1,7 @@
 package com.smartpower.cilab.smartpower;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v4.util.Pair;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +13,7 @@ import java.util.List;
  * Created by edufor4g on 2017/6/28.
  */
 
-public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHolder>  {
+public class Earring_ContactsAdapter extends RecyclerView.Adapter<Earring_ContactsAdapter.ViewHolder>  {
 
     private static LayoutInflater mLayoutInflater;
     private static Context context;
@@ -42,9 +36,9 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
         }
     }
 //拿表
-    public List<Contact> mContacts;
+    public List<Earring_Contact> mContacts;
 
-    public ContactsAdapter(List<Contact> contacts){
+    public Earring_ContactsAdapter(List<Earring_Contact> contacts){
         mContacts = contacts;
     }
 
@@ -60,7 +54,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Contact contact = mContacts.get(position);
+        Earring_Contact contact = mContacts.get(position);
         holder.nameTextView.setText(contact.getName());
         holder.priceTextView.setText(contact.getPrice());
 //        nameTextView.setText(contact.getName());

@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageButton watch,earring,list,hot,graph;
     private TextView letter;
+    public int num=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,20 +29,22 @@ public class MainActivity extends AppCompatActivity {
         watch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                JSONcode item = new JSONcode("getWatch");
-                Log.d("MainActivity", "ArrayList numbers: " + item.getItemData().size());
-                for(int i=0; i<item.getItemData().size(); i++) {
-                    try {
-                        Log.d("MainActivity", "Item: " + item.getItemData().get(i));
-                        Log.d("MainActivity", "Name: " + item.getItemData().get(i).getString("Name"));
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
+//                JSONcode item = new JSONcode("getWatch");
+//                num = item.getItemData().size();
+//                Log.d("MainActivity", "ArrayList numbers: " + num);
+//                for(int i=0; i<num; i++) {
+//                    try {
+//                        Log.d("MainActivity", "Item: " + item.getItemData().get(i));
+//                        Log.d("MainActivity", "Name: " + item.getItemData().get(i).getString("Name"));
+//                        Log.d("MainActivity", "Price: " + item.getItemData().get(i).getString("Price"));
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
 
-//                Intent intent = new Intent();
-//                intent.setClass(MainActivity.this , page_watch.class);
-//                startActivity(intent);
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this , page_watch.class);
+                startActivity(intent);
             }
         });
 
@@ -51,19 +54,19 @@ public class MainActivity extends AppCompatActivity {
         earring.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                JSONcode item = new JSONcode("getEarring");
-                Log.d("MainActivity", "ArrayList numbers: " + item.getItemData().size());
-                for(int i=0; i<item.getItemData().size(); i++) {
-                    try {
-                        Log.d("MainActivity", "Item: " + item.getItemData().get(i));
-                        Log.d("MainActivity", "Item: " + item.getItemData().get(i).getString("Name"));
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-//                Intent intent = new Intent();
-//                intent.setClass(MainActivity.this , page_earring.class);
-//                startActivity(intent);
+//                JSONcode item = new JSONcode("getEarring");
+//                Log.d("MainActivity", "ArrayList numbers: " + item.getItemData().size());
+//                for(int i=0; i<item.getItemData().size(); i++) {
+//                    try {
+//                        Log.d("MainActivity", "Item: " + item.getItemData().get(i));
+//                        Log.d("MainActivity", "Item: " + item.getItemData().get(i).getString("Price"));
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this , page_earring.class);
+                startActivity(intent);
             }
         });
 
@@ -83,6 +86,17 @@ public class MainActivity extends AppCompatActivity {
         list.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                JSONcode item = new JSONcode("getList");
+//                Log.d("MainActivity", "ArrayList numbers: " + item.getItemData().size());
+//                for(int i=0; i<item.getItemData().size(); i++) {
+//                    try {
+//                        Log.d("MainActivity", "Name: " + item.getItemData().get(i));
+//                        Log.d("MainActivity", "Item: " + item.getItemData().get(i).getString("Price"));
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this , page_list.class);
                 startActivity(intent);

@@ -7,21 +7,20 @@
     android:layout_height="match_parent"
     tools:context="com.smartpower.cilab.smartpower.page_watch">
 
-    <android.support.v7.widget.RecyclerView
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/recycler_view"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_above="@+id/BACK"
+        android:layout_alignParentStart="true" />
 
     <ImageButton
         android:id="@+id/BACK"
         android:layout_width="300dp"
         android:layout_height="60dp"
         app:srcCompat="@android:drawable/ic_menu_revert"
+        android:layout_marginBottom="16dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="33dp" />
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
