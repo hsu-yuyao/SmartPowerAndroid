@@ -103,16 +103,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        graph = (ImageButton) findViewById(R.id.graph);
-
-        graph.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(MainActivity.this , page_graph.class);
-                startActivity(intent);
-            }
-        });
 
 
 

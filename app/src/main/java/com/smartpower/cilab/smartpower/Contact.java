@@ -58,7 +58,7 @@ public class Contact {
                 Log.d("MainActivity", "Name: " + item.getItemData().get(i).getString("Name"));
                 Log.d("MainActivity", "Price: " + item.getItemData().get(i).getString("Price"));
                 Contact contact = new Contact();
-                contact.setName(" Name - " + item.getItemData().get(i).getString("Name") );
+                contact.setName(item.getItemData().get(i).getString("Name") );
                 contact.setPrice("$ - "+item.getItemData().get(i).getString("Price"));
                 list.add(contact);
             } catch (JSONException e) {

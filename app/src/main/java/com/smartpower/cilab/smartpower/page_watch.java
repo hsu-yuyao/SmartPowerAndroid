@@ -26,16 +26,7 @@ public class page_watch extends AppCompatActivity {
         rvContacts.setAdapter(adapter);
         rvContacts.setLayoutManager(new LinearLayoutManager(this));
 
-        back = (ImageButton) findViewById(R.id.BACK);
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(page_watch.this , MainActivity.class);
-                startActivity(intent);
-            }
-        });
 
     }
 }

@@ -61,14 +61,4 @@
         android:background="@null"
         app:srcCompat="@drawable/shopping_list" />
 
-    <ImageButton
-        android:id="@+id/graph"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        android:scaleType="fitCenter"
-        app:srcCompat="@drawable/shopping"
-        android:layout_below="@+id/list"
-        android:background="@null"
-        android:layout_alignStart="@+id/list" />
-
 </RelativeLayout>

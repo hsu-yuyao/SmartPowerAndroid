@@ -14,7 +14,6 @@ public class page_earring extends AppCompatActivity {
     private RecyclerView rvContacts;
     private RecyclerView.LayoutManager mLayoutManager;
 
-    private ImageButton back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,16 +25,7 @@ public class page_earring extends AppCompatActivity {
         rvContacts.setAdapter(adapter);
         rvContacts.setLayoutManager(new LinearLayoutManager(this));
 
-        back = (ImageButton) findViewById(R.id.BACK);
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(page_earring.this , MainActivity.class);
-                startActivity(intent);
-            }
-        });
 
     }
 }

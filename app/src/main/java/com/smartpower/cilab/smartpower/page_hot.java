@@ -27,16 +27,6 @@ public class page_hot extends AppCompatActivity {
         rvContacts.setAdapter(adapter);
         rvContacts.setLayoutManager(new LinearLayoutManager(this));
 
-        back = (ImageButton) findViewById(R.id.BACK);
-
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(page_hot.this , MainActivity.class);
-                startActivity(intent);
-            }
-        });
 
     }
 }
