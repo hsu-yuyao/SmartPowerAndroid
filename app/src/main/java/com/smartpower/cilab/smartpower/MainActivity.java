@@ -14,7 +14,7 @@ import org.json.JSONException;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ImageButton watch,earring,list,hot,graph;
+    private ImageButton watch,earring,list,hot,qr;
     private TextView letter;
     public int num=0;
 
@@ -103,6 +103,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        qr = (ImageButton) findViewById(R.id.qr);
+
+        qr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this , page_qr.class);
+                startActivity(intent);
+            }
+        });
 
 
 
