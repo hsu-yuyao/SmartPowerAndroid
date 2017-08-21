@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -19,33 +20,48 @@ import java.util.List;
  * Created by edufor4g on 2017/6/28.
  */
 
-public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHolder>  {
-
-    private static LayoutInflater mLayoutInflater;
-    private static Context context;
-    private String[] mTitles;
-
-    public static class ViewHolder extends RecyclerView.ViewHolder{
-//        private View itemView;
-        public TextView nameTextView, priceTextView;
-        public ViewHolder(View itemView){
-            super(itemView);
+class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    private View view;
+    public TextView nameTextView, priceTextView,txt_description;
+    private ItemClickListener itemClickListener;
+    public ViewHolder(View itemView){
+        super(itemView);
 //            this.itemView = itemView;
-            nameTextView = (TextView) itemView.findViewById(R.id.tv_name);
-            priceTextView = (TextView) itemView.findViewById(R.id.tv_price);
+        nameTextView = (TextView) itemView.findViewById(R.id.tv_name);
+        priceTextView = (TextView) itemView.findViewById(R.id.tv_price);
+        itemView.setOnClickListener(this);
 //            itemView.setOnClickListener(new View.OnClickListener() {
 //                @Override
 //                public void onClick(View v) {
 //                    Log.d("NormalTextViewHolder", "onClick--> position = " + getPosition());
 //                }
 //            });
-        }
     }
+    public void setItemClickListener(ItemClickListener itemClickListener) {
+        this.itemClickListener = itemClickListener;
+    }
+
+    @Override
+    public void onClick(View v) {
+        this.itemClickListener.onItemClick(this.getLayoutPosition());
+    }
+
+
+}
+
+public class ContactsAdapter extends RecyclerView.Adapter<ViewHolder>  {
+
+
+    private static Context context;
+
+
+
 //拿表
     public List<Contact> mContacts;
 
     public ContactsAdapter(List<Contact> contacts){
         mContacts = contacts;
+        this.context = context;
     }
 
     @Override
@@ -63,6 +79,15 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
         Contact contact = mContacts.get(position);
         holder.nameTextView.setText(contact.getName());
         holder.priceTextView.setText(contact.getPrice());
+        holder.setItemClickListener(new ItemClickListener() {
+
+            @Override
+            public void onItemClick(int position) {
+                Log.d("Tag","Value");
+                Toast.makeText(context, "item click: "+mContacts, Toast.LENGTH_SHORT).show();
+            }
+
+        });
 //        nameTextView.setText(contact.getName());
 
 
