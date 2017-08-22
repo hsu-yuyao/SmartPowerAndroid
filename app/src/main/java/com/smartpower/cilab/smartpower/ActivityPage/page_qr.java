@@ -74,6 +74,7 @@ public class page_qr extends AppCompatActivity implements ZXingScannerView.Resul
         Toast.makeText(getApplicationContext(),result.getText(), Toast.LENGTH_SHORT).show();
         Log.d("result", "handleResult: " + result.getText());
         zXingScannerView.resumeCameraPreview(this);
+        onBackPressed();
     }
 }
 
