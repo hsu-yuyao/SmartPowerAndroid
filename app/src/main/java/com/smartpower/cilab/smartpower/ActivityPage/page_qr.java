@@ -1,16 +1,15 @@
-package com.smartpower.cilab.smartpower;
+package com.smartpower.cilab.smartpower.ActivityPage;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.zxing.Result;
+import com.smartpower.cilab.smartpower.R;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
@@ -25,6 +24,7 @@ public class page_qr extends AppCompatActivity implements ZXingScannerView.Resul
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_qr);
+        Log.d("", "onCreate");
 
 //        back = (ImageButton) findViewById(R.id.BACK);
 //
@@ -32,7 +32,7 @@ public class page_qr extends AppCompatActivity implements ZXingScannerView.Resul
 //            @Override
 //            public void onClick(View v) {
 //                Intent intent = new Intent();
-//                intent.setClass(page_qr.this , page_list.class);
+//                intent.setClass(page_qr.this , page_shoppingList.class);
 //                startActivity(intent);
 //            }
 //        });
@@ -72,6 +72,7 @@ public class page_qr extends AppCompatActivity implements ZXingScannerView.Resul
     @Override
     public void handleResult(Result result) {
         Toast.makeText(getApplicationContext(),result.getText(), Toast.LENGTH_SHORT).show();
+        Log.d("result", "handleResult: " + result.getText());
         zXingScannerView.resumeCameraPreview(this);
     }
 }

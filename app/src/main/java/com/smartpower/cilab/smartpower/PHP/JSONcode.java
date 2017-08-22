@@ -24,7 +24,6 @@ public class JSONcode {
         new Thread(connect).start();
         Log.d("PHP", "Get php data.");
         while(connect.getResult() == "");           // wait thread
-        Log.d("PHP", connect.getResult());
         JsonGenerator(connect.getResult());
     }
 

@@ -1,17 +1,13 @@
 package com.smartpower.cilab.smartpower;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v4.util.Pair;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import java.util.List;
 
@@ -19,58 +15,60 @@ import java.util.List;
  * Created by edufor4g on 2017/6/28.
  */
 
-public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHolder>  {
+public class ContactsAdapter extends RecyclerView.Adapter<ViewHolder>{
 
-    private static LayoutInflater mLayoutInflater;
-    private static Context context;
-    private String[] mTitles;
+    private List<Item> itemList;
 
-    public static class ViewHolder extends RecyclerView.ViewHolder{
-//        private View itemView;
-        public TextView nameTextView, priceTextView;
-        public ViewHolder(View itemView){
-            super(itemView);
-//            this.itemView = itemView;
-            nameTextView = (TextView) itemView.findViewById(R.id.tv_name);
-            priceTextView = (TextView) itemView.findViewById(R.id.tv_price);
-//            itemView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Log.d("NormalTextViewHolder", "onClick--> position = " + getPosition());
-//                }
-//            });
-        }
+    public ContactsAdapter(List<Item> itemList){
+        this.itemList = itemList;
     }
-//拿表
-    public List<Contact> mContacts;
+    protected Bitmap scaleImg(Bitmap bm, int newSize) {
 
-    public ContactsAdapter(List<Contact> contacts){
-        mContacts = contacts;
+        /* 獲得圖片的寬高 */
+        int width = bm.getWidth();
+        int height = bm.getHeight();
+
+        float reSize = (width>height)? ((float)newSize/width):((float)newSize/height);
+
+        /* Don't zoom in */
+        if(reSize > 1)
+            reSize = 1;
+
+        Log.d("Item-scaleImg", "reSize rate: " + reSize);
+
+
+
+        /* 取得想要縮放的matrix參數 */
+        Matrix matrix = new Matrix();
+        matrix.postScale(reSize, reSize);
+
+        /* 得到新的圖片 */
+        Bitmap newbm = Bitmap.createBitmap(bm, 0, 0, width, height, matrix, true);
+
+        return newbm;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
-        View contactView = LayoutInflater.from(context).inflate(R.layout.item_contact, parent, false);
-
-        ViewHolder viewHolder = new ViewHolder(contactView);
+        View itemView = LayoutInflater.from(context).inflate(R.layout.item_contact, parent, false);
+        ViewHolder viewHolder = new ViewHolder(itemView, itemList);
 
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Contact contact = mContacts.get(position);
-        holder.nameTextView.setText(contact.getName());
-        holder.priceTextView.setText(contact.getPrice());
-//        nameTextView.setText(contact.getName());
+        Item item = itemList.get(position);
+        holder.itemText.setText("商品：" + item.getName() + "\n價錢：$" + item.getPrice());
 
-
+        holder.itemImage.setImageBitmap(scaleImg(item.getImage(), 80));
+//        holder.itemImage.setImageBitmap(item.getImage());
     }
 
     @Override
     public int getItemCount() {
-        return mContacts.size();
+        return itemList.size();
     }
 
 

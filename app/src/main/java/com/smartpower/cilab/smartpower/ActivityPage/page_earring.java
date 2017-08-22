@@ -1,16 +1,17 @@
-package com.smartpower.cilab.smartpower;
+package com.smartpower.cilab.smartpower.ActivityPage;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
+import android.util.Log;
+
+import com.smartpower.cilab.smartpower.Item;
+import com.smartpower.cilab.smartpower.ContactsAdapter;
+import com.smartpower.cilab.smartpower.R;
 
 public class page_earring extends AppCompatActivity {
-    private Earring_ContactsAdapter adapter;
+    private ContactsAdapter adapter;
     private RecyclerView rvContacts;
     private RecyclerView.LayoutManager mLayoutManager;
 
@@ -20,8 +21,12 @@ public class page_earring extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_earring);
 
+        Log.d("Earring Page", "onCreate!!");
+
+        //  宣告 recyclerView
         rvContacts = (RecyclerView) findViewById(R.id.recyclerview);
-        adapter = new Earring_ContactsAdapter( Earring_Contact.generateSampleList());
+        Item itemDetail = new Item();
+        adapter = new ContactsAdapter( itemDetail.generateSampleList("getEarring"));
         rvContacts.setAdapter(adapter);
         rvContacts.setLayoutManager(new LinearLayoutManager(this));
 

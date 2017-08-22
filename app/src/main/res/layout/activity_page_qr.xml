@@ -5,7 +5,7 @@
     android:id="@+id/activity_page_qr"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.smartpower.cilab.smartpower.page_qr">
+    tools:context="com.smartpower.cilab.smartpower.ActivityPage.page_qr">
 
     <TextView
         android:id="@+id/textView"

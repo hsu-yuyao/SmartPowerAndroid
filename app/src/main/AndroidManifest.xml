@@ -10,18 +10,18 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".MainActivity">
+        <activity android:name=".ActivityPage.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".page_watch" />
-        <activity android:name=".page_earring" />
-        <activity android:name=".page_hot" />
-        <activity android:name=".page_list" />
-        <activity android:name=".page_qr" ></activity>
+        <activity android:name=".ActivityPage.page_watch" />
+        <activity android:name=".ActivityPage.page_earring" />
+        <activity android:name=".ActivityPage.page_hot" />
+        <activity android:name=".ActivityPage.page_shoppingList" />
+        <activity android:name=".ActivityPage.page_qr" ></activity>
     </application>
 
 </manifest>

@@ -40,12 +40,11 @@ class PHPConnect implements Runnable {
                 builder.append(line + "\n");
             }
 
-            Log.d("PHPConnect", "executeQuery: Finish readLine!!");
+
 
             is.close();
             result = builder.toString();
-
-            Log.d("PHPConnect", "executeQuery: Finish!!");
+            Log.d("PHPConnect", "executeQuery: Finish readLine!!");
 
         } catch(Exception e) {
             Log.e("log_tag", e.toString());

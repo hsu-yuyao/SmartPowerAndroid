@@ -1,16 +1,13 @@
-package com.smartpower.cilab.smartpower;
+package com.smartpower.cilab.smartpower.ActivityPage;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.smartpower.cilab.smartpower.PHP.JSONcode;
-
-import org.json.JSONException;
+import com.smartpower.cilab.smartpower.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -98,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
 //                }
 
                 Intent intent = new Intent();
-                intent.setClass(MainActivity.this , page_list.class);
+                intent.setClass(MainActivity.this , page_shoppingList.class);
                 startActivity(intent);
             }
         });
