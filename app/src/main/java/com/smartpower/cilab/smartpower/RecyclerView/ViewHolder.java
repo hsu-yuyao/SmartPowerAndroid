@@ -41,12 +41,13 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
         /* item selected and get item's information */
         Item selectedItem = itemList.get(getAdapterPosition());
         Log.d("ViewHolder", "get itemView: " + itemView.getContext().getClass().getSimpleName());
+
         Intent intent = new Intent(itemView.getContext(), ItemDetail.class);
 
         /* can translate object like class "Item" */
         Bundle bundle = new Bundle();
         bundle.putParcelable("Information", selectedItem);
-        bundle.putString("ClassName", itemView.getContext().getClass().getSimpleName().toString());
+        bundle.putString("ClassName", itemView.getContext().getClass().getSimpleName());
         intent.putExtras(bundle);
 
         /* change activity */

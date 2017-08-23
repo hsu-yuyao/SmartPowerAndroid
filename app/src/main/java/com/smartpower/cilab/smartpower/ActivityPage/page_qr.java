@@ -9,7 +9,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.zxing.Result;
+import com.smartpower.cilab.smartpower.ImageProcessing;
+import com.smartpower.cilab.smartpower.PHP.JSONcode;
+import com.smartpower.cilab.smartpower.PHP.URLPicture;
 import com.smartpower.cilab.smartpower.R;
+import com.smartpower.cilab.smartpower.RecyclerView.Item;
+import com.smartpower.cilab.smartpower.ShoppingList;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
@@ -71,10 +79,50 @@ public class page_qr extends AppCompatActivity implements ZXingScannerView.Resul
 
     @Override
     public void handleResult(Result result) {
-        Toast.makeText(getApplicationContext(),result.getText(), Toast.LENGTH_SHORT).show();
-        Log.d("result", "handleResult: " + result.getText());
-        zXingScannerView.resumeCameraPreview(this);
-        onBackPressed();
+        try {
+            JSONArray jsonArray = new JSONArray(result.getText());
+            JSONObject jsonObject = jsonArray.getJSONObject(0);
+            int item = jsonObject.getInt("Item");
+            int no = jsonObject.getInt("No");
+
+            Log.d("ShoppingCart", "Item: " + item);
+            Log.d("ShoppingCart", "No: " + no);
+
+            String action = "getItem&item=" + item + "&no=" + no;
+            JSONcode jsoNcode = new JSONcode(action);
+            JSONObject jsonObject1 = jsoNcode.getItemData().get(0);
+
+            Item itemDetail = new Item();
+
+            /* get item's detail */
+            itemDetail.setItem(jsonObject1.getInt("Item"));
+            itemDetail.setNo(jsonObject1.getInt("No"));
+            itemDetail.setName(jsonObject1.getString("Name") );
+            itemDetail.setPrice(jsonObject1.getInt("Price"));
+            itemDetail.setIntroduction(jsonObject1.getString("Introduction"));
+            itemDetail.setStock(jsonObject1.getInt("Stock"));
+            itemDetail.setCounter(jsonObject1.getInt("Counter"));
+
+                /* get item's image */
+            URLPicture connect = new URLPicture(jsonObject1.getString("Image"));
+            new Thread(connect).start();
+            while(connect.getImage() == null);
+            itemDetail.setImage(new ImageProcessing().fixXY(connect.getImage(), 200));
+
+            ShoppingList.addItem(itemDetail);
+
+            Toast.makeText(getApplicationContext(),result.getText(), Toast.LENGTH_SHORT).show();
+            zXingScannerView.resumeCameraPreview(this);
+            onBackPressed();
+
+        }catch(Exception e) {
+            Log.e("JSONcode", "Get json error!");
+            Log.e("JSONcode", e.toString());
+        }
+//        Toast.makeText(getApplicationContext(),result.getText(), Toast.LENGTH_SHORT).show();
+//        Log.d("result", "handleResult: " + result.getText());
+//        zXingScannerView.resumeCameraPreview(this);
+//        onBackPressed();
     }
 }
 

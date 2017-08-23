@@ -127,24 +127,24 @@ public class Item implements Parcelable{
     public List<Item> generateSampleList(String action){
 
         Log.d("Item", "action: " + action);
-        JSONcode item = new JSONcode(action);           //action :  getWatch, getEarring, getHotSale
+        JSONcode jsoNcode = new JSONcode(action);           //action :  getWatch, getEarring, getHotSale, getItem
         ArrayList<Item> list = new ArrayList<>();
-        int num = item.getItemData().size();
+        int num = jsoNcode.getItemData().size();
         for(int i=0; i<num; i++) {
             try {
                 Item itemDetail = new Item();
 
                 /* get item's detail */
-                itemDetail.setItem(item.getItemData().get(i).getInt("Item"));
-                itemDetail.setNo(item.getItemData().get(i).getInt("No"));
-                itemDetail.setName(item.getItemData().get(i).getString("Name") );
-                itemDetail.setPrice(item.getItemData().get(i).getInt("Price"));
-                itemDetail.setIntroduction(item.getItemData().get(i).getString("Introduction"));
-                itemDetail.setStock(item.getItemData().get(i).getInt("Stock"));
-                itemDetail.setCounter(item.getItemData().get(i).getInt("Counter"));
+                itemDetail.setItem(jsoNcode.getItemData().get(i).getInt("Item"));
+                itemDetail.setNo(jsoNcode.getItemData().get(i).getInt("No"));
+                itemDetail.setName(jsoNcode.getItemData().get(i).getString("Name") );
+                itemDetail.setPrice(jsoNcode.getItemData().get(i).getInt("Price"));
+                itemDetail.setIntroduction(jsoNcode.getItemData().get(i).getString("Introduction"));
+                itemDetail.setStock(jsoNcode.getItemData().get(i).getInt("Stock"));
+                itemDetail.setCounter(jsoNcode.getItemData().get(i).getInt("Counter"));
 
                 /* get item's image */
-                URLPicture connect = new URLPicture(item.getItemData().get(i).getString("Image"));
+                URLPicture connect = new URLPicture(jsoNcode.getItemData().get(i).getString("Image"));
                 new Thread(connect).start();
                 while(connect.getImage() == null);
                 itemDetail.setImage(new ImageProcessing().fixXY(connect.getImage(), 200));
