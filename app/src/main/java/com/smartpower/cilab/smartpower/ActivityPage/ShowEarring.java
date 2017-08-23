@@ -11,10 +11,6 @@ import com.smartpower.cilab.smartpower.RecyclerView.ContactsAdapter;
 import com.smartpower.cilab.smartpower.R;
 
 public class ShowEarring extends AppCompatActivity {
-    private ContactsAdapter adapter;
-    private RecyclerView rvContacts;
-    private RecyclerView.LayoutManager mLayoutManager;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,13 +20,11 @@ public class ShowEarring extends AppCompatActivity {
         Log.d("Earring Page", "onCreate!!");
 
         //  宣告 recyclerView
-        rvContacts = (RecyclerView) findViewById(R.id.recyclerview);
-        Item itemDetail = new Item();
-        adapter = new ContactsAdapter( itemDetail.generateSampleList("getEarring"));
+        Item item = new Item();
+
+        RecyclerView rvContacts = (RecyclerView) findViewById(R.id.recyclerview);
+        ContactsAdapter adapter = new ContactsAdapter( item.generateSampleList("getEarring"));
         rvContacts.setAdapter(adapter);
         rvContacts.setLayoutManager(new LinearLayoutManager(this));
-
-
-
     }
 }

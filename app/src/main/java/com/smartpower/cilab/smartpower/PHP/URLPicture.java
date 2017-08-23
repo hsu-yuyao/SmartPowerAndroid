@@ -30,9 +30,11 @@ public class URLPicture implements Runnable {
             URL url = new URL("http://140.115.51.178/smartPower/file/picture/" + this.imageName);
             urlConnection=(HttpURLConnection) url.openConnection();
             urlConnection.connect();
-
+            Log.d("URLPicture", "UrlConnect Successfully!!");
             InputStream input = urlConnection.getInputStream();
+            Log.d("URLPicture", "Get Input Stream Successfully!!");
             Bitmap bitmap = BitmapFactory.decodeStream(input);
+            Log.d("URLPicture", "decodeStream Successfully!!");
 
             return bitmap;
 

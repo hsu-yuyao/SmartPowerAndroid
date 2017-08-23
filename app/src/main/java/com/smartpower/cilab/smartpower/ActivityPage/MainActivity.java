@@ -11,7 +11,7 @@ import com.smartpower.cilab.smartpower.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ImageButton watch,earring,list,hot,qr;
+    private ImageButton watch, earring, shoppingCart, hot, qr;
     private TextView letter;
     public int num=0;
 
@@ -21,24 +21,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         letter = (TextView) findViewById(R.id.letter);
-        watch = (ImageButton) findViewById(R.id.watch);
 
+        watch = (ImageButton) findViewById(R.id.watch);
         watch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                JSONcode item = new JSONcode("getWatch");
-//                num = item.getItemData().size();
-//                Log.d("MainActivity", "ArrayList numbers: " + num);
-//                for(int i=0; i<num; i++) {
-//                    try {
-//                        Log.d("MainActivity", "Item: " + item.getItemData().get(i));
-//                        Log.d("MainActivity", "Name: " + item.getItemData().get(i).getString("Name"));
-//                        Log.d("MainActivity", "Price: " + item.getItemData().get(i).getString("Price"));
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this , ShowWatch.class);
                 startActivity(intent);
@@ -46,29 +33,16 @@ public class MainActivity extends AppCompatActivity {
         });
 
         earring = (ImageButton) findViewById(R.id.earring);
-        //earring.setImageResource(R.drawable.earRing);
-
         earring.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                JSONcode item = new JSONcode("getEarring");
-//                Log.d("MainActivity", "ArrayList numbers: " + item.getItemData().size());
-//                for(int i=0; i<item.getItemData().size(); i++) {
-//                    try {
-//                        Log.d("MainActivity", "Item: " + item.getItemData().get(i));
-//                        Log.d("MainActivity", "Item: " + item.getItemData().get(i).getString("Price"));
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this , ShowEarring.class);
                 startActivity(intent);
             }
         });
 
-        hot = (ImageButton) findViewById(R.id.hot);
-
+        hot = (ImageButton) findViewById(R.id.hotSale);
         hot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,22 +52,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        list = (ImageButton) findViewById(R.id.list);
-
-        list.setOnClickListener(new View.OnClickListener() {
+        shoppingCart = (ImageButton) findViewById(R.id.list);
+        shoppingCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                JSONcode item = new JSONcode("getList");
-//                Log.d("MainActivity", "ArrayList numbers: " + item.getItemData().size());
-//                for(int i=0; i<item.getItemData().size(); i++) {
-//                    try {
-//                        Log.d("MainActivity", "Name: " + item.getItemData().get(i));
-//                        Log.d("MainActivity", "Item: " + item.getItemData().get(i).getString("Price"));
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this , ShoppingCart.class);
                 startActivity(intent);
@@ -101,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         qr = (ImageButton) findViewById(R.id.qr);
-
         qr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

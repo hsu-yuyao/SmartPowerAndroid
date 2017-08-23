@@ -1,15 +1,13 @@
 package com.smartpower.cilab.smartpower.RecyclerView;
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
 
+import com.smartpower.cilab.smartpower.ImageProcessing;
 import com.smartpower.cilab.smartpower.PHP.JSONcode;
 import com.smartpower.cilab.smartpower.PHP.URLPicture;
-import com.smartpower.cilab.smartpower.R;
 
 import org.json.JSONException;
 
@@ -37,6 +35,29 @@ public class Item implements Parcelable{
     public Item() {
 
     }
+
+    protected Item(Parcel in) {
+        item = in.readInt();
+        no = in.readInt();
+        name = in.readString();
+        price = in.readInt();
+        image = in.readParcelable(Bitmap.class.getClassLoader());
+        introduction = in.readString();
+        stock = in.readInt();
+        counter = in.readInt();
+    }
+
+    public static final Creator<Item> CREATOR = new Creator<Item>() {
+        @Override
+        public Item createFromParcel(Parcel in) {
+            return new Item(in);
+        }
+
+        @Override
+        public Item[] newArray(int size) {
+            return new Item[size];
+        }
+    };
 
     public int getItem() {
         return item;
@@ -126,9 +147,9 @@ public class Item implements Parcelable{
                 URLPicture connect = new URLPicture(item.getItemData().get(i).getString("Image"));
                 new Thread(connect).start();
                 while(connect.getImage() == null);
-                itemDetail.setImage(connect.getImage());
+                itemDetail.setImage(new ImageProcessing().fixXY(connect.getImage(), 400));
 
-                Log.d("Item", "Get the \"" + itemDetail.getName() + "\" data");
+                Log.d("Item", "Get the " + itemDetail.getName()+ "\" data");
                 list.add(itemDetail);
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -145,7 +166,14 @@ public class Item implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-
+        dest.writeInt(item);
+        dest.writeInt(no);
+        dest.writeString(name);
+        dest.writeInt(price);
+        dest.writeParcelable(image, flags);
+        dest.writeString(introduction);
+        dest.writeInt(stock);
+        dest.writeInt(counter);
     }
 }
 

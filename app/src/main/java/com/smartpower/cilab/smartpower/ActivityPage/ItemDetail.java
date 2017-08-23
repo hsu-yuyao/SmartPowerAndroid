@@ -1,34 +1,54 @@
 package com.smartpower.cilab.smartpower.ActivityPage;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.smartpower.cilab.smartpower.ImageProcessing;
 import com.smartpower.cilab.smartpower.R;
+import com.smartpower.cilab.smartpower.RecyclerView.Item;
+import com.smartpower.cilab.smartpower.ShoppingList;
 
 public class ItemDetail extends AppCompatActivity {
+
+    private ImageView imageView;
+    private TextView itemName, information;
+    private ImageButton shoppingCart;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_detail);
 
-        Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.no_image);
-        ImageView backgound = (ImageView) findViewById(R.id.image);
+        Log.d("ItemDetail", "onCreate");
 
-        Point screenSize = new Point();
-        getWindowManager().getDefaultDisplay().getSize(screenSize);
-        Log.d("ItemDetail", "screen size: " + screenSize.x + " " + screenSize.y);
-        backgound.setImageBitmap(new ImageProcessing().scaleImg(bmp, screenSize.x, screenSize.x));
+        Bundle test = this.getIntent().getExtras();
+        final Item item = test.getParcelable("Information");
 
-        TextView information = (TextView) findViewById(R.id.information);
-        information.setText("Tessdfsdfjkla;sdjfkl;asdjfkl;asdfjkl;asdfjkla;sdfjkla;sdjfkla;sdjfkla;sdjfkjweifjlwsejifjeifjoejfioejfOSDjfk;sTessdfsdfjkla;sdjfkl;asdjfkl;asdfjkl;asdfjkla;sdfjkla;sdjfkla;sdjfkla;sdjfkjweifjlwsejifjeifjoejfioejfOSDjfk;sTessdfsdfjkla;sdjfkl;asdjfkl;asdfjkl;asdfjkla;sdfjkla;sdjfkla;sdjfkla;sdjfkjweifjlwsejifjeifjoejfioejfOSDjfk;sTessdfsdfjkla;sdjfkl;asdjfkl;asdfjkl;asdfjkla;sdfjkla;sdjfkla;sdjfkla;sdjfkjweifjlwsejifjeifjoejfioejfOSDjfk;sTessdfsdfjkla;sdjfkl;asdjfkl;asdfjkl;asdfjkla;sdfjkla;sdjfkla;sdjfkla;sdjfkjweifjlwsejifjeifjoejfioejfOSDjfk;sTessdfsdfjkla;sdjfkl;asdjfkl;asdfjkl;asdfjkla;sdfjkla;sdjfkla;sdjfkla;sdjfkjweifjlwsejifjeifjoejfioejfOSDjfk;sTessdfsdfjkla;sdjfkl;asdjfkl;asdfjkl;asdfjkla;sdfjkla;sdjfkla;sdjfkla;sdjfkjweifjlwsejifjeifjoejfioejfOSDjfk;sTessdfsdfjkla;sdjfkl;asdjfkl;asdfjkl;asdfjkla;sdfjkla;sdjfkla;sdjfkla;sdjfkjweifjlwsejifjeifjoejfioejfOSDjfk;sTessdfsdfjkla;sdjfkl;asdjfkl;asdfjkl;asdfjkla;sdfjkla;sdjfkla;sdjfkla;sdjfkjweifjlwsejifjeifjoejfioejfOSDjfk;sTessdfsdfjkla;sdjfkl;asdjfkl;asdfjkl;asdfjkla;sdfjkla;sdjfkla;sdjfkla;sdjfkjweifjlwsejifjeifjoejfioejfOSDjfk;s");
+        Log.d("ItemDetail", "Get the item information");
+
+        itemName = (TextView) findViewById(R.id.itemName);
+        imageView = (ImageView) findViewById(R.id.imageView);
+        information = (TextView) findViewById(R.id.information);
+
+        itemName.setText(item.getName());
+        imageView.setImageBitmap(item.getImage());
+        information.setText(item.getIntroduction());
+        Log.d("ItemDetail", "Success set text of item!!");
+
+        shoppingCart = (ImageButton) findViewById(R.id.shoppingCart);
+        shoppingCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ShoppingList.addItem(item);
+                ShoppingList.showList();
+            }
+        });
+
 
     }
 }

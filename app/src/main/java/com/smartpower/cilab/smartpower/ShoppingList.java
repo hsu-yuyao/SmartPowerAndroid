@@ -14,6 +14,16 @@ public class ShoppingList {
 
     public static ArrayList<Item> shopping = new ArrayList<>();
 
+    public static void addItem(Item item) {
+        for(int i=0; i<shopping.size(); i++) {
+            Item haved = shopping.get(i);
+            if( (haved.getItem()==item.getItem()) && (haved.getNo()==item.getNo()) ) {
+                return;
+            }
+        }
+        shopping.add(item);
+    }
+
     public static void showList() {
         for(int i=0; i<shopping.size(); i++) {
             Item list = shopping.get(i);

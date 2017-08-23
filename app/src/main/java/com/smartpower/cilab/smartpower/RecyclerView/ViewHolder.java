@@ -20,13 +20,14 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
 
     public TextView itemText;
     public ImageView itemImage;
+    private View itemView;
 
     private List<Item> itemList;
 
     public ViewHolder(View itemView, List<Item> itemList){
         super(itemView);
         this.itemList = itemList;
-
+        this.itemView = itemView;
         itemText = (TextView) itemView.findViewById(R.id.itemText);
         itemImage = (ImageView) itemView.findViewById(R.id.itemImage);
 
@@ -41,16 +42,14 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
         Item selectedItem = itemList.get(getAdapterPosition());
 
         Intent intent = new Intent(itemView.getContext(), ItemDetail.class);
-
+        Log.d("ViewHolder", "Test1");
         /* can translate object like class "Item" */
         Bundle bundle = new Bundle();
-        bundle.putParcelable("ItemInformation", selectedItem);
+        bundle.putParcelable("Information", selectedItem);
         intent.putExtras(bundle);
+        Log.d("ViewHolder", "Test1");
 
+        /* change activity */
         itemView.getContext().startActivity(intent);
-
-
-//        ShoppingList.shopping.add(itemList.get(getAdapterPosition()));
-//        ShoppingList.showList();
     }
 }
