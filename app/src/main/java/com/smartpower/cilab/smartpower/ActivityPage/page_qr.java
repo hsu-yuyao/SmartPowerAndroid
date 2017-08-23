@@ -32,7 +32,7 @@ public class page_qr extends AppCompatActivity implements ZXingScannerView.Resul
 //            @Override
 //            public void onClick(View v) {
 //                Intent intent = new Intent();
-//                intent.setClass(page_qr.this , page_shoppingList.class);
+//                intent.setClass(page_qr.this , ShoppingCart.class);
 //                startActivity(intent);
 //            }
 //        });

@@ -1,10 +1,15 @@
-package com.smartpower.cilab.smartpower;
+package com.smartpower.cilab.smartpower.RecyclerView;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.smartpower.cilab.smartpower.ActivityPage.ItemDetail;
+import com.smartpower.cilab.smartpower.R;
 
 import java.util.List;
 
@@ -12,10 +17,8 @@ import java.util.List;
  * Created by YuYao on 2017/8/22.
  */
 public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-    //        private View itemView;
-    public TextView nameTextView, priceTextView;
+
     public TextView itemText;
-    //        private int clickPosition;
     public ImageView itemImage;
 
     private List<Item> itemList;
@@ -33,5 +36,21 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
     @Override
     public void onClick(View v) {
         Log.d("!!!!!!!!!!!!!!!!!!!!!", "onClick: " + itemList.get(getAdapterPosition()).getName() );
+
+        /* item selected and get item's information */
+        Item selectedItem = itemList.get(getAdapterPosition());
+
+        Intent intent = new Intent(itemView.getContext(), ItemDetail.class);
+
+        /* can translate object like class "Item" */
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("ItemInformation", selectedItem);
+        intent.putExtras(bundle);
+
+        itemView.getContext().startActivity(intent);
+
+
+//        ShoppingList.shopping.add(itemList.get(getAdapterPosition()));
+//        ShoppingList.showList();
     }
 }

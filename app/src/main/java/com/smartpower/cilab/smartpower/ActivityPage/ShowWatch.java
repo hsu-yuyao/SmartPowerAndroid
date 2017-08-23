@@ -7,11 +7,11 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ImageButton;
 
-import com.smartpower.cilab.smartpower.Item;
-import com.smartpower.cilab.smartpower.ContactsAdapter;
+import com.smartpower.cilab.smartpower.RecyclerView.Item;
+import com.smartpower.cilab.smartpower.RecyclerView.ContactsAdapter;
 import com.smartpower.cilab.smartpower.R;
 
-public class page_watch extends AppCompatActivity {
+public class ShowWatch extends AppCompatActivity {
 //    private ContactsAdapter adapter;
 //    private RecyclerView rvContacts;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -21,7 +21,7 @@ public class page_watch extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_page_watch);
+        setContentView(R.layout.activity_watch);
 
         Log.d("Watch Page", "onCreate!!");
 

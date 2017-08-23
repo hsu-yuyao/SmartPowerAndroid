@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 //                }
 
                 Intent intent = new Intent();
-                intent.setClass(MainActivity.this , page_watch.class);
+                intent.setClass(MainActivity.this , ShowWatch.class);
                 startActivity(intent);
             }
         });
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 //                    }
 //                }
                 Intent intent = new Intent();
-                intent.setClass(MainActivity.this , page_earring.class);
+                intent.setClass(MainActivity.this , ShowEarring.class);
                 startActivity(intent);
             }
         });
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(MainActivity.this , page_hot.class);
+                intent.setClass(MainActivity.this , ShowHotSale.class);
                 startActivity(intent);
             }
         });
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
 //                }
 
                 Intent intent = new Intent();
-                intent.setClass(MainActivity.this , page_shoppingList.class);
+                intent.setClass(MainActivity.this , ShoppingCart.class);
                 startActivity(intent);
             }
         });

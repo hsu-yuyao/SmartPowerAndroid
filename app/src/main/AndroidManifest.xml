@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.smartpower.cilab.smartpower">
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -17,11 +18,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ActivityPage.page_watch" />
-        <activity android:name=".ActivityPage.page_earring" />
-        <activity android:name=".ActivityPage.page_hot" />
-        <activity android:name=".ActivityPage.page_shoppingList" />
-        <activity android:name=".ActivityPage.page_qr" ></activity>
+        <activity android:name=".ActivityPage.ShowWatch" />
+        <activity android:name=".ActivityPage.ShowEarring" />
+        <activity android:name=".ActivityPage.ShowHotSale" />
+        <activity android:name=".ActivityPage.ShoppingCart" />
+        <activity android:name=".ActivityPage.page_qr" />
+        <activity android:name=".ActivityPage.ItemDetail"></activity>
     </application>
 
 </manifest>

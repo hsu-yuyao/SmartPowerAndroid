@@ -6,12 +6,12 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ImageButton;
 
-import com.smartpower.cilab.smartpower.ContactsAdapter;
+import com.smartpower.cilab.smartpower.RecyclerView.ContactsAdapter;
 import com.smartpower.cilab.smartpower.R;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
-public class page_shoppingList extends AppCompatActivity {
+public class ShoppingCart extends AppCompatActivity {
 
     private ContactsAdapter adapter;
     private RecyclerView rvContacts;
@@ -25,7 +25,7 @@ public class page_shoppingList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_page_list);
+        setContentView(R.layout.activity_shopping_cart);
 
         Log.d("shopping list page", "onCreate!!");
 
@@ -61,7 +61,7 @@ public class page_shoppingList extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(page_shoppingList.this , MainActivity.class);
+                intent.setClass(ShoppingCart.this , MainActivity.class);
                 startActivity(intent);
             }
         });
@@ -72,7 +72,7 @@ public class page_shoppingList extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(page_shoppingList.this , page_qr.class);
+                intent.setClass(ShoppingCart.this , page_qr.class);
                 startActivity(intent);
 
                 zXingScannerView = new ZXingScannerView(getApplicationContext());

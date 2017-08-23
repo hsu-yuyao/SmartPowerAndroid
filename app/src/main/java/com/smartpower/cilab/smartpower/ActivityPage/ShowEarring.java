@@ -4,31 +4,32 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.ImageButton;
+import android.util.Log;
 
-import com.smartpower.cilab.smartpower.Item;
-import com.smartpower.cilab.smartpower.ContactsAdapter;
+import com.smartpower.cilab.smartpower.RecyclerView.Item;
+import com.smartpower.cilab.smartpower.RecyclerView.ContactsAdapter;
 import com.smartpower.cilab.smartpower.R;
 
-public class page_hot extends AppCompatActivity {
-
+public class ShowEarring extends AppCompatActivity {
     private ContactsAdapter adapter;
     private RecyclerView rvContacts;
     private RecyclerView.LayoutManager mLayoutManager;
 
-    private ImageButton back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_page_hot);
+        setContentView(R.layout.activity_earring);
+
+        Log.d("Earring Page", "onCreate!!");
 
         //  宣告 recyclerView
         rvContacts = (RecyclerView) findViewById(R.id.recyclerview);
-        Item contact = new Item();
-        adapter = new ContactsAdapter( contact.generateSampleList("getHotSale"));
+        Item itemDetail = new Item();
+        adapter = new ContactsAdapter( itemDetail.generateSampleList("getEarring"));
         rvContacts.setAdapter(adapter);
         rvContacts.setLayoutManager(new LinearLayoutManager(this));
+
 
 
     }
