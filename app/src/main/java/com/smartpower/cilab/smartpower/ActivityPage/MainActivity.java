@@ -3,6 +3,7 @@ package com.smartpower.cilab.smartpower.ActivityPage;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -52,10 +53,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        shoppingCart = (ImageButton) findViewById(R.id.list);
+        shoppingCart = (ImageButton) findViewById(R.id.shoppingCart);
         shoppingCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("MainActivity", "change to ShoppingCart");
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this , ShoppingCart.class);
                 startActivity(intent);

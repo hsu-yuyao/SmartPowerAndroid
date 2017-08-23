@@ -147,7 +147,7 @@ public class Item implements Parcelable{
                 URLPicture connect = new URLPicture(item.getItemData().get(i).getString("Image"));
                 new Thread(connect).start();
                 while(connect.getImage() == null);
-                itemDetail.setImage(new ImageProcessing().fixXY(connect.getImage(), 400));
+                itemDetail.setImage(new ImageProcessing().fixXY(connect.getImage(), 200));
 
                 Log.d("Item", "Get the " + itemDetail.getName()+ "\" data");
                 list.add(itemDetail);

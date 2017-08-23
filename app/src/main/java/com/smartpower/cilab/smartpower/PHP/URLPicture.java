@@ -35,6 +35,7 @@ public class URLPicture implements Runnable {
             Log.d("URLPicture", "Get Input Stream Successfully!!");
             Bitmap bitmap = BitmapFactory.decodeStream(input);
             Log.d("URLPicture", "decodeStream Successfully!!");
+            urlConnection.disconnect();
 
             return bitmap;
 
