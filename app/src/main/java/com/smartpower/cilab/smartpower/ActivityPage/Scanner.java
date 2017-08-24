@@ -67,7 +67,7 @@ public class Scanner extends AppCompatActivity implements ZXingScannerView.Resul
                     Toast.makeText(getApplicationContext(), "Error：00002", Toast.LENGTH_SHORT).show();
 
             } else
-                Toast.makeText(getApplicationContext(), "Error：00001", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "請掃螢幕上的QRcode", Toast.LENGTH_SHORT).show();
 
         }catch(Exception e) {
             Log.e("JSONcode", e.toString());

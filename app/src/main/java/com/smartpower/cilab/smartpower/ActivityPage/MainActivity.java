@@ -12,7 +12,7 @@ import com.smartpower.cilab.smartpower.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ImageButton watch, earring, shoppingCart, hot, qr;
+    private ImageButton watch, earring, shoppingCart, hot;
     private TextView letter;
     public int num=0;
 
@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        letter = (TextView) findViewById(R.id.letter);
+        letter = (TextView) findViewById(R.id.title);
 
         watch = (ImageButton) findViewById(R.id.watch);
         watch.setOnClickListener(new View.OnClickListener() {
@@ -63,19 +63,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        qr = (ImageButton) findViewById(R.id.qr);
-        qr.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(MainActivity.this , page_qr.class);
-                startActivity(intent);
-            }
-        });
-
-
-
     }
 
 
