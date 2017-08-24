@@ -47,4 +47,8 @@ public class JSONcode {
         return itemData;
     }
 
+    public JSONObject getEachItem(int index) {
+        return itemData.get(index);
+    }
+
 }

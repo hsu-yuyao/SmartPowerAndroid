@@ -14,14 +14,15 @@ public class ShoppingList {
 
     private static ArrayList<Item> shoppingList = new ArrayList<>();
 
-    public static void addItem(Item item) {
+    public static boolean addItem(Item item) {
         for(int i = 0; i< shoppingList.size(); i++) {
             Item haved = shoppingList.get(i);
             if( (haved.getItem()==item.getItem()) && (haved.getNo()==item.getNo()) ) {
-                return;
+                return false;
             }
         }
         shoppingList.add(item);
+        return true;
     }
 
     public static void removeItem(Item item) {

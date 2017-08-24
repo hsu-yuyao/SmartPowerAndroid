@@ -23,7 +23,8 @@
         <activity android:name=".ActivityPage.ShowHotSale" />
         <activity android:name=".ActivityPage.ShoppingCart" />
         <activity android:name=".ActivityPage.page_qr" />
-        <activity android:name=".ActivityPage.ItemDetail"></activity>
+        <activity android:name=".ActivityPage.ItemDetail" />
+        <activity android:name=".ActivityPage.Scanner"></activity>
     </application>
 
 </manifest>
