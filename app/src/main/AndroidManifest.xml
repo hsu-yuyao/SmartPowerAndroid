@@ -22,9 +22,12 @@
         <activity android:name=".ActivityPage.ShowEarring" />
         <activity android:name=".ActivityPage.ShowHotSale" />
         <activity android:name=".ActivityPage.ShoppingCart" />
-        <activity android:name=".ActivityPage.page_qr" />
         <activity android:name=".ActivityPage.ItemDetail" />
-        <activity android:name=".ActivityPage.Scanner"></activity>
+        <activity android:name=".ActivityPage.Scanner" />
+
+        <service
+            android:name=".MyService"
+            android:enabled="true"></service>
     </application>
 
 </manifest>
