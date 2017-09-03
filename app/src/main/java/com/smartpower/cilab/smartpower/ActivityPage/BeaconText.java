@@ -8,15 +8,15 @@ import android.widget.TextView;
 
 import com.smartpower.cilab.smartpower.R;
 
-public class ShowBeaconText extends AppCompatActivity {
+public class BeaconText extends AppCompatActivity {
     
     private TextView name, textcontent;
-    private String TAG = "ShowBeaconText";
+    private String TAG = "BeaconText";
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_show_beacon_text);
+        setContentView(R.layout.activity_beacon_text);
 
         Log.d(TAG, "onCreate: ");
         name = (TextView) findViewById(R.id.messageName);

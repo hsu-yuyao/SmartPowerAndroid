@@ -35,7 +35,8 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".ActivityPage.ShowBeaconText"></activity>
+        <activity android:name=".ActivityPage.BeaconText" />
+        <activity android:name=".BeaconProduct"></activity>
     </application>
 
 </manifest>

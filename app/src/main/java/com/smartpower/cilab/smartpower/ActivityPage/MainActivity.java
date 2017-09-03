@@ -8,6 +8,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -17,6 +19,7 @@ import android.widget.TextView;
 import com.smartpower.cilab.smartpower.Beacon.BeaconList;
 import com.smartpower.cilab.smartpower.Beacon.MessageResult;
 import com.smartpower.cilab.smartpower.Beacon.NearBeacon;
+import com.smartpower.cilab.smartpower.BeaconProduct;
 import com.smartpower.cilab.smartpower.R;
 import tw.org.iii.beaconcontentsdk.BeaconContent;
 import tw.org.iii.beaconcontentsdk.OpenAlarm;
@@ -75,17 +78,33 @@ public class MainActivity extends AppCompatActivity {
                             /* notify information */
                             final int notifyID = message.getNotifyID(); // 通知的識別號碼
                             final int requestCode = notifyID; // PendingIntent的Request Code
+                            final Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION); // 通知音效的URI，在這裡使用系統內建的通知音效
                             final Intent intent = new Intent(); // 目前Activity的Intent
                             switch (messageType) {
                                 case "Products":
-                                    intent.setClass(MainActivity.this, ShoppingCart.class);
+
+                                    intent.setClass(MainActivity.this, BeaconProduct.class);
+
+                                    intent.putExtra("SellerName", message.getProducts().getSellerName());
+                                    intent.putExtra("PhotoUrl", message.getProducts().getPhotoUrl());
+                                    intent.putExtra("Description", message.getProducts().getSellerDescription());
+
+                                    Log.d(TAG, "Product's Name: " + message.getProducts().getSellerName());
+                                    Log.d(TAG, "Product's PhotoUrl: " + message.getProducts().getPhotoUrl());
+                                    Log.d(TAG, "Product's Description: " + message.getProducts().getSellerDescription());
+
                                     break;
+
                                 case "Texts":
-                                    intent.setClass(MainActivity.this, ShowBeaconText.class);
+
+                                    intent.setClass(MainActivity.this, BeaconText.class);
+
                                     intent.putExtra("Name", message.getTexts().getName());
                                     intent.putExtra("Textcontent", message.getTexts().getTextcontent());
+
                                     Log.d(TAG, "Text's Name: " + message.getTexts().getName());
                                     Log.d(TAG, "Text's Textcontent: " + message.getTexts().getTextcontent());
+
                                     break;
                                 default:
                                     intent.setClass(MainActivity.this, MainActivity.class);
@@ -102,7 +121,8 @@ public class MainActivity extends AppCompatActivity {
                                             .setContentTitle(beaconID)
                                             .setContentText(beaconUUID)
                                             .setContentIntent(pendingIntent)
-                                            .setAutoCancel(true).build(); // 建立通知
+                                            .setAutoCancel(true)
+                                            .setSound(soundUri).build(); // 建立通知
                             notificationManager.notify(notifyID, notification); // 發送通知
                         }
                     });
