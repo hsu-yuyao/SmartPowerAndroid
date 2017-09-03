@@ -51,4 +51,4 @@
 -keep class tw.org.iii.beaconcontentsdk.OpenAlarm
 -keepclassmembers class tw.org.iii.beaconcontentsdk.OpenAlarm** {*;}
 
--assumenosideeffects class android.util.Log { *; }
+-keepattributes InnerClasses

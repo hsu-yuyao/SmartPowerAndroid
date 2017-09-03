@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SmartPowerAndroid.iml" filepath="$PROJECT_DIR$/SmartPowerAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/beaconcontentsdk_v2.7/beaconcontentsdk_v2.7.iml" filepath="$PROJECT_DIR$/beaconcontentsdk_v2.7/beaconcontentsdk_v2.7.iml" />
+      <module fileurl="file://$PROJECT_DIR$/beaconcontentsdk_v2.7_withLog/beaconcontentsdk_v2.7_withLog.iml" filepath="$PROJECT_DIR$/beaconcontentsdk_v2.7_withLog/beaconcontentsdk_v2.7_withLog.iml" />
     </modules>
   </component>
 </project>

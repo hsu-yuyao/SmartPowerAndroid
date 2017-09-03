@@ -1,47 +1,64 @@
 package com.smartpower.cilab.smartpower.ActivityPage;
 
-import android.content.ComponentName;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.smartpower.cilab.smartpower.MyService;
 import com.smartpower.cilab.smartpower.R;
+
+import tw.org.iii.beaconcontentsdk.BeaconContent;
+import tw.org.iii.beaconcontentsdk.OpenAlarm;
+import tw.org.iii.beaconcontentsdk.json.push_message.Push_message;
+
+//import com.smartpower.cilab.smartpower.MyService;
 
 public class MainActivity extends AppCompatActivity {
 
     private ImageButton watch, earring, shoppingCart, hot;
     private TextView letter;
+    private String TAG = "BeaconReceive";
+//
+    final private String server_ip = "iiibeacon.net";
+    final private String app_key = "aa972f5d488cbb0c4c1316c939cb03de37a74d20";
 
-    private MyService.MyBinder myBinder;
-    private ServiceConnection mServiceConnection = new ServiceConnection() {
+
+    private Push_message push_message;
+    private OpenAlarm openAlarm;
+    private BeaconContent beaconContent;
+
+    private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
-        public void onServiceConnected(ComponentName className, IBinder binder) {
-            myBinder = (MyService.MyBinder) binder;
-            myBinder.startDownload();
-        }
-        @Override
-        public void onServiceDisconnected(ComponentName className) {
-            Log.e("Service Connection", "onServiceDisconnected");
+        public void onReceive(Context context, Intent intent) {
+
         }
     };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
-        Intent intent = new Intent(this, MyService.class);
-        this.startService(intent);
+//        Intent intent = new Intent(this, MyService.class);
+//        this.startService(intent);
+
+        /*-------------------beacon---------------*/
+        openAlarm = new OpenAlarm(MainActivity.this);
+        registerReceiver(broadcastReceiver, new IntentFilter("beaconDetect"));
+        beaconContent = new BeaconContent(server_ip,app_key);
+
+        openAlarm.getSdkData(server_ip, app_key, 5 * 1000);
+        openAlarm.startSdkService();
 
 
+        /*-------------------beacon---------------*/
 
         letter = (TextView) findViewById(R.id.title);
 
@@ -93,15 +110,4 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        Intent intent = new Intent(this, MyService.class);
-        this.bindService(intent, mServiceConnection, Context.BIND_AUTO_CREATE);
-    }
-    @Override
-    public void onPause() {
-        super.onPause();
-        this.unbindService(mServiceConnection);
-    }
 }
