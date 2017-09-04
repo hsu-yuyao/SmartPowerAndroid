@@ -72,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
                             MessageResult message = new MessageResult(server_ip, app_key, beaconUUID, BeaconList.nearBeaconsList.size());
 
                             final String messageType = message.getMessageType();
+                            String messageTitle = "";
+                            String messageName = "";
                             final tw.org.iii.beaconcontentsdk.json.push_message.Result_content Result_content = message.getResult_content();
 
 
@@ -82,12 +84,14 @@ public class MainActivity extends AppCompatActivity {
                             final Intent intent = new Intent(); // 目前Activity的Intent
                             switch (messageType) {
                                 case "Products":
-
+                                    messageTitle = "商品訊息";
                                     intent.setClass(MainActivity.this, BeaconProduct.class);
 
                                     intent.putExtra("SellerName", message.getProducts().getSellerName());
                                     intent.putExtra("PhotoUrl", message.getProducts().getPhotoUrl());
                                     intent.putExtra("Description", message.getProducts().getSellerDescription());
+
+                                    messageName = message.getProducts().getSellerName();
 
                                     Log.d(TAG, "Product's Name: " + message.getProducts().getSellerName());
                                     Log.d(TAG, "Product's PhotoUrl: " + message.getProducts().getPhotoUrl());
@@ -96,11 +100,13 @@ public class MainActivity extends AppCompatActivity {
                                     break;
 
                                 case "Texts":
-
+                                    messageTitle = "文字訊息";
                                     intent.setClass(MainActivity.this, BeaconText.class);
 
                                     intent.putExtra("Name", message.getTexts().getName());
                                     intent.putExtra("Textcontent", message.getTexts().getTextcontent());
+
+                                    messageName = message.getTexts().getName();
 
                                     Log.d(TAG, "Text's Name: " + message.getTexts().getName());
                                     Log.d(TAG, "Text's Textcontent: " + message.getTexts().getTextcontent());
@@ -118,8 +124,8 @@ public class MainActivity extends AppCompatActivity {
                             final Notification notification =
                                     new Notification.Builder(getApplicationContext())
                                             .setSmallIcon(R.drawable.icon)
-                                            .setContentTitle(beaconID)
-                                            .setContentText(beaconUUID)
+                                            .setContentTitle(messageTitle)
+                                            .setContentText(messageName)
                                             .setContentIntent(pendingIntent)
                                             .setAutoCancel(true)
                                             .setSound(soundUri).build(); // 建立通知
