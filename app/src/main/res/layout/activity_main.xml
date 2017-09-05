@@ -55,30 +55,41 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="23dp" />
 
-    <TextView
-        android:id="@+id/titleEn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Smart Power"
-        android:textSize="40dp"
-        android:textColor="@color/colorPrimaryDark"
-        android:textStyle="bold"
-        android:typeface="serif"
-        android:layout_marginBottom="33dp"
-        android:layout_above="@+id/hotSale"
-        android:layout_centerHorizontal="true" />
+    <!--<TextView-->
+        <!--android:id="@+id/titleEn"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Smart Power"-->
+        <!--android:textSize="40dp"-->
+        <!--android:textColor="@color/colorPrimaryDark"-->
+        <!--android:textStyle="bold"-->
+        <!--android:typeface="serif"-->
+        <!--android:layout_marginBottom="33dp"-->
+        <!--android:layout_above="@+id/hotSale"-->
+        <!--android:layout_centerHorizontal="true" />-->
 
-    <TextView
-        android:id="@+id/title"
+    <ImageView
+        android:id="@+id/imageView2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="智 慧 店 員"
-        android:textSize="45dp"
-        android:textColor="@color/colorPrimaryDark"
-        android:textStyle="bold"
-        android:typeface="serif"
-        android:layout_above="@+id/titleEn"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp" />
+        android:layout_height="150dp"
+        android:layout_weight="1"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/title_ch"
+        android:layout_above="@+id/hotSale"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="29dp" />
+
+    <!--<TextView-->
+        <!--android:id="@+id/title"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="智 慧 店 員"-->
+        <!--android:textSize="45dp"-->
+        <!--android:textColor="@color/colorPrimaryDark"-->
+        <!--android:textStyle="bold"-->
+        <!--android:typeface="serif"-->
+        <!--android:layout_above="@+id/titleEn"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginBottom="16dp" />-->
 
 </RelativeLayout>

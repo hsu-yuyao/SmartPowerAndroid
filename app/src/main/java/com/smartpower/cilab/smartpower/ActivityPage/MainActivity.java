@@ -16,11 +16,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
 import com.smartpower.cilab.smartpower.Beacon.BeaconList;
 import com.smartpower.cilab.smartpower.Beacon.MessageResult;
 import com.smartpower.cilab.smartpower.Beacon.NearBeacon;
 import com.smartpower.cilab.smartpower.BeaconProduct;
 import com.smartpower.cilab.smartpower.R;
+
 import tw.org.iii.beaconcontentsdk.BeaconContent;
 import tw.org.iii.beaconcontentsdk.OpenAlarm;
 import tw.org.iii.beaconcontentsdk.json.push_message.Push_message;
@@ -153,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
             startActivityForResult(enableIntent, RESULT_OK);
         }
 
-            /*----------------Start scanning beacon---------------*/
+        /*----------------Start scanning beacon---------------*/
         openAlarm = new OpenAlarm(MainActivity.this);
         registerReceiver(broadcastReceiver, new IntentFilter("beaconDetect"));
         beaconContent = new BeaconContent(server_ip,app_key);
